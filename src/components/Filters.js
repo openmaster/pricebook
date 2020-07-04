@@ -21,8 +21,9 @@ class Filters extends React.Component{
         this.state.set_priceRange(parseInt(value));
     }
     handleSearchChange(e, {value}){
-        this.setState({searchContent: value});
+        this.setState({searchContent: value, loading: true});
         this.state.search(value);
+        this.setState({loading: false})
     }
     render(){
         //console.log(this.state);
@@ -48,7 +49,7 @@ class Filters extends React.Component{
         return(
             <Menu secondary>
                 <Menu.Item position="right">
-                    <h2 className="logo">Pricebook</h2>
+                    <h2 className="logo">Pricebook-G</h2>
                 </Menu.Item>
                 <Menu.Item position="right">
                 <Dropdown

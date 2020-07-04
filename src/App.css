@@ -37,5 +37,10 @@
   }
 }
 .logo{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: yellow;
+  font-size: xx-large;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+.banner{
+  background-image: url('./banner.jpg');
 }

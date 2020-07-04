@@ -9,9 +9,10 @@ import BatchPriceChange from './components/BatchPriceChange';
 function App() {
   return (
     <div className="App container">
-      
-      <Filters/>
-      <BatchPriceChange/>
+      <div className="banner">
+        <Filters/>
+        <BatchPriceChange/>
+      </div>
       <PriceList/>
       <AddItem/>
     </div>

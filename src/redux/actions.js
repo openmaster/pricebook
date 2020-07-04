@@ -1,4 +1,4 @@
-import { ADD_ITEM, EDIT_ITEM, DELETE_ITEM, SET_DEP, SET_PRICERANGE, SEARCH} from './actionTypes';
+import { ADD_ITEM, EDIT_ITEM, DELETE_ITEM, SET_DEP, SET_PRICERANGE, SEARCH, BATCHPRICECHANGE} from './actionTypes';
 
 let ItemId = 4;
 
@@ -35,6 +35,12 @@ export const set_priceRange = rangeId => ({
 })
 export const search = content => ({
     type: SEARCH,
+    payload: {
+        content
+    }
+})
+export const batchPriceChange = content => ({
+    type: BATCHPRICECHANGE,
     payload: {
         content
     }
