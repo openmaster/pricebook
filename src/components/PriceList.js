@@ -21,7 +21,7 @@ class PriceList extends React.Component{
             </Table.Header>
             <Table.Body>
                 {priceBook.map(item => {
-                    return(<Table.Row>
+                    return(<Table.Row key={item.id}>
                         <Table.Cell>{item.id}</Table.Cell>
                         <Table.Cell>{item.name}</Table.Cell>
                         <Table.Cell>{item.dep}</Table.Cell>

@@ -10,7 +10,7 @@ class BatchPriceChange extends React.Component{
         this.handlePriceChange = this.handlePriceChange.bind(this)
     }
     validChange = (change) => {
-        const regex = /^([0-9]|\+|-|\*|\/)([0-9]|.+)(%|)$/
+        const regex = /^(\d|\+|-|\*)*(\d+)(\.*)(\d*)(%*)$/
         if(change.match(regex)){
             return true;
         } else {

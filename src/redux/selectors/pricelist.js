@@ -7,9 +7,9 @@ const leadOperators = {
     '*':(a, b) => (parseFloat(a) * parseFloat(b)).toFixed(2),
     '/':(a, b) => (parseFloat(a) / parseFloat(b)).toFixed(2)
 }
-// const trailingOperators = {
-//     '%': true
-// }
+const trailingOperators = {
+    '%': (a, b) => (parseFloat(a) * parseFloat(b) / 100).toFixed(2)
+}
 
 export const getItemsByDepartment = (priceList, filters, priceChange) => {
     //console.log(filters);
@@ -45,20 +45,16 @@ export const getItemsByDepartment = (priceList, filters, priceChange) => {
         let change = priceChange.priceChange;
         
         let leadOptr = leadOperators[change.toString().charAt(0)];
-        //let trailingOptr = null;
-        //console.log(leadOperators[change.toString().charAt(0).toString()]);
-        
-       
-        // if(leadOperators[change.toString().charAt(0)]){
-        //     console.log('hitting lead operator')
-        //     leadOptr = change.charAt(0);
-        //     change = change.slice(1);
-        // }
-        // if(trailingOperators[change.toString().charAt(change.length)]){
-        //     trailingOptr = change.charAt(change.length);
-        //     change = change.slice(change.length-1)
-        // }
-        if (leadOptr){
+        let trailingOptr = trailingOperators[change.toString().charAt(change.length-1)]
+        console.log(trailingOptr);
+        if(trailingOptr && leadOptr){
+            console.log('hitting both optr')
+            change = change.slice(1, change.length-1);
+            items = items.map(item => {
+                item.priceF = leadOptr(item.price, trailingOptr(item.price, change));
+                return item;
+            })
+        } else if(leadOptr){
             change = change.slice(1);
             items = items.map(item => {
                 item.priceF = leadOptr(item.price, change);
@@ -76,7 +72,6 @@ export const getItemsByDepartment = (priceList, filters, priceChange) => {
                 return item;
             })
         }
-        
     }
 
     return {priceList:[...items]};
